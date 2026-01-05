@@ -6,14 +6,19 @@ const BookingController = require("../controllers/BookingController");
 const LeadController = require("../controllers/LeadController");
 const StaffController = require("../controllers/StaffController");
 const AuthController = require("../controllers/AuthController");
+const DashboardController = require("../controllers/DashboardController");
 
 router.post("/login", AuthController.login);
 router.post("/signup", AuthController.signup);
 
 
+router.get("/dashboaardcard", DashboardController.dashboardcard);
+
+
 router.post("/add-room", uploadSingleImage, RoomController.addRoom);
 router.get("/rooms", RoomController.AllRoom);
 router.get("/rooms/:id", RoomController.getroomdtailbyid);
+router.get("/update-room", RoomController.updateroom);
 
 
 router.post("/add-booking", uploadSingleImage, BookingController.AddBooking);

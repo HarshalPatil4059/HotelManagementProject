@@ -64,11 +64,49 @@ class RoomController {
     }
   };
 
+
   static getroomdtailbyid = async (req,res) => {
     const {id} = req.params;
     const roomdetails = await Room.findOne({
       where: {id},
     });
+
+    // console.log("roomdetails", roomdetails);
+    res.status(201).json({ success: true, data: roomdetails });
+  };
+
+  static updateroom = async (req,res) => {
+    const {id} = req.params;
+    const {
+        room_name,
+        room_no,
+        price,
+        capacity,
+        floor,
+        size,
+        bedType,
+        imageFile,
+        amenities: amenitiesString,
+        description,
+        available,
+      } = req.body;
+
+      
+    const roomdetails = await Room.update({
+        room_name,
+        room_no,
+        price,
+        capacity,
+        floor,
+        size,
+        bedType,
+        imageFile,
+        amenities: amenitiesString,
+        description,
+        available,
+      },
+      {where: id},
+    );
 
     // console.log("roomdetails", roomdetails);
     res.status(201).json({ success: true, data: roomdetails });

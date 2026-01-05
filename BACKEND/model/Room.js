@@ -44,8 +44,8 @@ const Room = sequelize.define("Room", {
     allowNull: true,
   },
   available: {
-    type: DataTypes.STRING,
-    defaultValue: "available",
+    type: DataTypes.BOOLEAN,
+    defaultValue: true,
   },
 });
 
